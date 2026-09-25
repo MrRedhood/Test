@@ -8,11 +8,13 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { width: 100%; height: 100%; overflow: hidden; background: #050505; color: #0ff; font-family: 'Courier New', monospace; }
         
-        #bg-canvas { position: absolute; top: 0; left: 0; z-index: 0; }
+        #bg-canvas { 
+            position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none;
+        }
         
         .login-container { 
             position: relative; 
-            z-index: 1; 
+            z-index: 10; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
@@ -21,7 +23,7 @@
         }
         
         form { 
-            background: rgba(10, 20, 20, 0.9);
+            background: rgba(10, 20, 20, 0.95);
             padding: 40px; 
             border: 2px solid #0ff; 
             border-radius: 12px; 
@@ -29,6 +31,7 @@
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
             backdrop-filter: blur(10px);
             text-align: center;
+            position: relative;
         }
         
         h2 { margin-bottom: 25px; text-transform: uppercase; letter-spacing: 3px; color: #fff; text-shadow: 0 0 10px #0ff; }
@@ -37,15 +40,16 @@
             width: 100%; 
             padding: 15px; 
             margin: 10px 0; 
-            background: rgba(0, 0, 0, 0.6); 
+            background: #000; 
             border: 1px solid #0ff; 
             color: #fff; 
             font-size: 16px;
             border-radius: 4px;
             outline: none;
+            display: block;
         }
         
-        input::placeholder { color: #088; }
+        input:focus { border-color: #fff; box-shadow: 0 0 10px #0ff; }
         
         button { 
             width: 100%; 

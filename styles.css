@@ -1,0 +1,2 @@
+body { background: #1e1e1e; color: #fff; font-family: 'JetBrains Mono', monospace; margin: 0; padding: 20px; }
+#ide-container { display: flex; flex-direction: column; height: 100vh; }

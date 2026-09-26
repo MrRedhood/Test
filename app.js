@@ -8,15 +8,16 @@ buttons.forEach((btn, i) => {
     el.className = 'btn';
     el.innerText = btn;
     const angle = (i / buttons.length) * 2 * Math.PI;
-    const x = 200 + 180 * Math.cos(angle) - 25;
-    const y = 200 + 180 * Math.sin(angle) - 25;
-    el.style.left = `${x}px`;
-    el.style.top = `${y}px`;
+    const radius = 175;
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
+    el.style.transform = `translate(${x}px, ${y}px)`;
     el.onclick = () => {
         if (btn === 'C') current = '';
-        else if (btn === '=') current = eval(current);
-        else current += btn;
-        display.innerText = current || '0';
+        else if (btn === '=') {
+            try { current = eval(current).toString(); } catch { current = 'Err'; }
+        } else current += btn;
+        display.innerText = current.length > 8 ? current.substring(0, 8) : (current || '0');
     };
     orbit.appendChild(el);
 });

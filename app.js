@@ -1,24 +1,24 @@
-console.log('Nexus-Core Agent: System Ready.');
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Simulate loading
+    const terminal = document.getElementById('terminal-output');
+    const log = (msg) => {
+        const p = document.createElement('p');
+        p.textContent = `> ${msg}`;
+        terminal.appendChild(p);
+    };
+
     setTimeout(() => {
         document.getElementById('splash-screen').style.display = 'none';
         document.getElementById('ide-container').classList.remove('hidden');
-    }, 1500);
+        log('System Initialized.');
+        log('Android Bridge: Connected.');
+        log('Neural Engine: Optimized.');
+    }, 2000);
 
-    // Handle tab clicking & active state
-    const activityButtons = document.querySelectorAll('#activity-bar button');
-    activityButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            activityButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    document.querySelectorAll('#activity-bar button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            document.querySelectorAll('#activity-bar button').forEach(b => b.classList.remove('active'));
+            e.currentTarget.classList.add('active');
+            log(`Action: ${e.currentTarget.textContent} triggered`);
         });
     });
-
-    // Terminal typing effect simulation
-    const term = document.querySelector('.terminal-content');
-    const msg = document.createElement('p');
-    msg.textContent = '> [DEVFORGE] UI Engine Rendered. Ready for commands.';
-    term.appendChild(msg);
 });

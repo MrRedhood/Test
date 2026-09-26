@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevForge: Futuristic Coding Agents</title>
+    <title>DevForge | Neural IDE</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 </head>
@@ -11,115 +11,45 @@
     <div id="splash-screen">
         <div class="splash-content">
             <h1>DEVFORGE</h1>
-            <p>Initializing Neural Coding Agents...</p>
             <div class="loader"></div>
+            <p>SYNCING NEURAL KERNEL...</p>
         </div>
     </div>
 
     <div id="ide-container" class="hidden">
-        <!-- Top Bar -->
         <header id="top-bar">
             <div class="logo">DEVFORGE</div>
-            <nav class="menu-bar">
-                <button>File</button>
-                <button>Edit</button>
-                <button>View</button>
-                <button>Run</button>
-                <button>Terminal</button>
-                <button>Git</button>
-            </nav>
             <div class="window-controls">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
+                <button class="ctrl red"></button>
+                <button class="ctrl yellow"></button>
+                <button class="ctrl green"></button>
             </div>
         </header>
 
         <div id="main-layout">
-            <!-- Activity Bar (VS Code Style) -->
-            <div id="activity-bar">
-                <button class="active" title="Explorer"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M3 3h8v8H3V3m10 0h8v8h-8V3M3 13h8v8H3v-8m10 0h8v8h-8v-8z"/></svg></button>
-                <button title="Search"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg></button>
-                <button title="Source Control"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8a8 8 0 0 1-8 8a8 8 0 0 1-8-8a8 8 0 0 1 8-8m-1 13v-2h2v2h-2z"/></svg></button>
-                <button title="Run & Debug"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M8 5.14v14l11-7l-11-7z"/></svg></button>
-                <button title="Extensions"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7 22V2h10v2h3v6h-3v10H7m2-2h6V4H9v16z"/></svg></button>
-                <button title="Android Studio" class="bottom-icon"><svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7 2l2 3h6l2-3h-1l-1.5 2.25h-5L8 2H7m-1 5h12c1.1 0 2 .9 2 2v11c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V9c0-1.1.9-2 2-2m4 4v5h2v-5h-2z"/></svg></button>
-            </div>
+            <aside id="activity-bar">
+                <button class="active" onclick="console.log('Explorer')">📂</button>
+                <button onclick="console.log('Search')">🔍</button>
+                <button onclick="console.log('Git')">⎇</button>
+                <button onclick="console.log('Debug')">⚡</button>
+            </aside>
 
-            <!-- Side Panel (Explorer) -->
-            <div id="side-panel">
-                <div class="panel-header">EXPLORER</div>
-                <div class="file-tree">
-                    <div class="folder open"><span class="icon">📂</span> DevForge_Project</div>
-                    <div class="file active"><span class="icon">📄</span> index.html</div>
-                    <div class="file"><span class="icon">📄</span> styles.css</div>
-                    <div class="file"><span class="icon">📄</span> app.js</div>
-                    <div class="folder"><span class="icon">📁</span> src</div>
-                    <div class="folder"><span class="icon">📁</span> assets</div>
-                </div>
-            </div>
+            <main id="editor-pane">
+                <div class="editor-header">WORKSPACE_CONTROLLER.JS</div>
+                <div id="code-canvas"></div>
+            </main>
 
-            <!-- Editor Area -->
-            <div id="editor-area">
-                <div id="tabs-container">
-                    <div class="tab active">index.html <span class="close">x</span></div>
-                    <div class="tab">app.js <span class="close">x</span></div>
-                </div>
-                <div id="code-editor">
-                    <div class="line-numbers">
-                        <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
-                    </div>
-                    <div class="code-content">
-                        <pre><code><span class="tag">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;html&gt;</span>
-  <span class="tag">&lt;head&gt;</span>
-    <span class="tag">&lt;title&gt;</span>DevForge<span class="tag">&lt;/title&gt;</span>
-  <span class="tag">&lt;/head&gt;</span>
-  <span class="tag">&lt;body&gt;</span>
-    <span class="comment">&lt;!-- Futuristic UI Active --&gt;</span>
-    <span class="tag">&lt;script&gt;</span><span class="keyword">const</span> agent = <span class="string">"Active"</span>;<span class="tag">&lt;/script&gt;</span>
-  <span class="tag">&lt;/body&gt;</span>
-<span class="tag">&lt;/html&gt;</span></code></pre>
-                    </div>
-                </div>
-                <div id="minimap"></div>
-            </div>
-
-            <!-- Bottom Panel (Terminal / Console / Android Logcat) -->
-            <div id="bottom-panel">
-                <div class="panel-tabs">
-                    <button class="active">TERMINAL</button>
-                    <button>CONSOLE</button>
-                    <button>LOGCAT</button>
-                    <button>PROBLEMS</button>
-                </div>
-                <div class="terminal-content">
-                    <p><span class="prompt">user@devforge:~$</span> npm run start</p>
-                    <p class="output">&gt; devforge@1.0.0 start</p>
-                    <p class="output">&gt; node app.js</p>
-                    <p class="output">[DEVFORGE] Agent system initialized successfully.</p>
-                    <p class="output">[DEVFORGE] Establishing connection to Android Virtual Device...</p>
-                    <p><span class="prompt">user@devforge:~$</span> <span class="cursor">_</span></p>
-                </div>
-            </div>
+            <section id="terminal-pane">
+                <div class="term-header">SYSTEM_LOGS</div>
+                <div id="terminal-output"></div>
+            </section>
         </div>
 
-        <!-- Status Bar -->
         <footer id="status-bar">
-            <div class="left-status">
-                <span class="branch">⎇ main</span>
-                <span class="sync">⟳ Synced</span>
-                <span class="errors">⚠ 0 Errors</span>
-            </div>
-            <div class="right-status">
-                <span class="lang">HTML</span>
-                <span class="encoding">UTF-8</span>
-                <span class="eol">LF</span>
-                <span class="device">Pixel 6 API 33</span>
-            </div>
+            <div id="sync-indicator">● SYSTEM_READY</div>
+            <div id="device-tag">ANDROID_VIRTUAL_DEVICE_01</div>
         </footer>
     </div>
-
     <script src="app.js"></script>
 </body>
 </html>

@@ -12,24 +12,22 @@ bookBtn.addEventListener('click', () => {
     }
 
     bookBtn.disabled = true;
-    bookBtn.style.opacity = '0.5';
     statusDiv.style.display = 'block';
     statusDiv.className = 'searching';
     statusDiv.innerHTML = `<div>Searching for your <strong>${type}</strong> ride...</div><button id="cancelBtn">Cancel Request</button>`;
+    
+    // Re-attach listener for cancel button
+    document.getElementById('cancelBtn').addEventListener('click', () => {
+        clearTimeout(timeout);
+        statusDiv.style.display = 'none';
+        bookBtn.disabled = false;
+        bookBtn.innerText = 'Request Ride';
+    });
     
     const timeout = setTimeout(() => {
         statusDiv.className = 'confirmed';
         statusDiv.innerHTML = `<div><strong>Driver Found!</strong><br>Your ${type} ride to <strong>${dest}</strong> is arriving shortly.</div>`;
         bookBtn.disabled = false;
-        bookBtn.style.opacity = '1';
         bookBtn.innerText = 'Request Another';
     }, 3000);
-
-    document.getElementById('cancelBtn').addEventListener('click', () => {
-        clearTimeout(timeout);
-        statusDiv.style.display = 'none';
-        bookBtn.disabled = false;
-        bookBtn.style.opacity = '1';
-        bookBtn.innerText = 'Request Ride';
-    });
 });

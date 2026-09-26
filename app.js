@@ -1,5 +1,6 @@
 const bookBtn = document.getElementById('bookBtn');
 const statusDiv = document.getElementById('status');
+let rideTimeout = null;
 
 bookBtn.addEventListener('click', () => {
     const pickup = document.getElementById('pickup').value.trim();
@@ -16,17 +17,16 @@ bookBtn.addEventListener('click', () => {
     statusDiv.className = 'searching';
     statusDiv.innerHTML = `<div>Searching for your <strong>${type}</strong> ride...</div><button id="cancelBtn">Cancel Request</button>`;
     
-    // Re-attach listener for cancel button
     document.getElementById('cancelBtn').addEventListener('click', () => {
-        clearTimeout(timeout);
+        clearTimeout(rideTimeout);
         statusDiv.style.display = 'none';
         bookBtn.disabled = false;
         bookBtn.innerText = 'Request Ride';
     });
     
-    const timeout = setTimeout(() => {
+    rideTimeout = setTimeout(() => {
         statusDiv.className = 'confirmed';
-        statusDiv.innerHTML = `<div><strong>Driver Found!</strong><br>Your ${type} ride to <strong>${dest}</strong> is arriving shortly.</div>`;
+        statusDiv.innerHTML = `<div><strong>Driver Found!</strong><br>Your ${type} ride is arriving shortly.</div>`;
         bookBtn.disabled = false;
         bookBtn.innerText = 'Request Another';
     }, 3000);

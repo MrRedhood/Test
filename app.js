@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const terminal = document.getElementById('terminal-output');
-    const log = (msg) => {
-        const p = document.createElement('p');
-        p.textContent = `> ${msg}`;
-        terminal.appendChild(p);
-    };
+    const splash = document.getElementById('splash-screen');
+    const container = document.getElementById('ide-container');
 
     setTimeout(() => {
-        document.getElementById('splash-screen').style.display = 'none';
-        document.getElementById('ide-container').classList.remove('hidden');
-        log('System Initialized.');
-        log('Android Bridge: Connected.');
-        log('Neural Engine: Optimized.');
+        splash.style.opacity = '0';
+        setTimeout(() => {
+            splash.style.display = 'none';
+            container.classList.remove('hidden');
+        }, 500);
     }, 2000);
 
-    document.querySelectorAll('#activity-bar button').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            document.querySelectorAll('#activity-bar button').forEach(b => b.classList.remove('active'));
-            e.currentTarget.classList.add('active');
-            log(`Action: ${e.currentTarget.textContent} triggered`);
-        });
-    });
+    window.renderView = (view) => {
+        const buttons = document.querySelectorAll('#activity-bar button');
+        buttons.forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        const editor = document.getElementById('code-editor');
+        editor.textContent = `// Current context: ${view.toUpperCase()}\n// Initializing stream...`;
+        
+        const prop = document.getElementById('prop-view');
+        prop.textContent = `Loaded component: ${view.toUpperCase()}_CONTROLLER`;
+    };
 });

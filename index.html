@@ -3,51 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevForge | Neural IDE</title>
+    <title>DevForge // Neural IDE</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="splash-screen">
-        <div class="splash-content">
-            <h1>DEVFORGE</h1>
-            <div class="loader"></div>
-            <p>SYNCING NEURAL KERNEL...</p>
-        </div>
+        <div class="loader"></div>
+        <h1 class="glitch" data-text="DEVFORGE">DEVFORGE</h1>
+        <p>INITIALIZING NEURAL KERNEL...</p>
     </div>
 
     <div id="ide-container" class="hidden">
         <header id="top-bar">
-            <div class="logo">DEVFORGE</div>
-            <div class="window-controls">
-                <button class="ctrl red"></button>
-                <button class="ctrl yellow"></button>
-                <button class="ctrl green"></button>
+            <div class="logo">DEVFORGE // CORE</div>
+            <div class="controls">
+                <button class="btn-ctrl" onclick="alert('Feature: Minimizing to System Tray')">—</button>
+                <button class="btn-ctrl" onclick="alert('Feature: Maximizing Workspace')">□</button>
+                <button class="btn-ctrl close-app" onclick="location.reload()">✕</button>
             </div>
         </header>
 
         <div id="main-layout">
             <aside id="activity-bar">
-                <button class="active" onclick="console.log('Explorer')">📂</button>
-                <button onclick="console.log('Search')">🔍</button>
-                <button onclick="console.log('Git')">⎇</button>
-                <button onclick="console.log('Debug')">⚡</button>
+                <button class="active" onclick="renderView('explorer')">📂</button>
+                <button onclick="renderView('search')">🔍</button>
+                <button onclick="renderView('git')">⎇</button>
+                <button onclick="renderView('debug')">⚡</button>
+                <button class="bottom-fixed" onclick="alert('Android Logcat Active')">🤖</button>
             </aside>
 
-            <main id="editor-pane">
-                <div class="editor-header">WORKSPACE_CONTROLLER.JS</div>
-                <div id="code-canvas"></div>
-            </main>
+            <section id="work-area">
+                <div id="editor-tabs">
+                    <div class="tab active">WORKSPACE_CTRL.js</div>
+                </div>
+                <div id="code-editor">// Neural engine ready...
+// Waiting for input...</div>
+            </section>
 
-            <section id="terminal-pane">
-                <div class="term-header">SYSTEM_LOGS</div>
-                <div id="terminal-output"></div>
+            <section id="side-pane">
+                <div class="pane-title">PROPERTIES</div>
+                <div class="pane-content" id="prop-view">Select an object to view parameters.</div>
             </section>
         </div>
 
         <footer id="status-bar">
-            <div id="sync-indicator">● SYSTEM_READY</div>
-            <div id="device-tag">ANDROID_VIRTUAL_DEVICE_01</div>
+            <div class="status-item">● READY</div>
+            <div class="status-item">AVD_PIXEL_6_API33</div>
+            <div class="status-item">BUILD: SUCCESSFUL</div>
         </footer>
     </div>
     <script src="app.js"></script>

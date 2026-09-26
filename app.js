@@ -1,18 +1,18 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const bookBtn = document.querySelector('button');
-    const pickupInput = document.querySelector('input[placeholder="Pickup location"]');
-    const destInput = document.querySelector('input[placeholder="Destination"]');
+document.getElementById('bookBtn').addEventListener('click', () => {
+    const pickup = document.getElementById('pickup').value;
+    const dest = document.getElementById('dest').value;
+    const statusDiv = document.getElementById('status');
 
-    bookBtn.addEventListener('click', () => {
-        const pickup = pickupInput.value;
-        const dest = destInput.value;
-
-        if (pickup && dest) {
-            alert(`Ride booked from ${pickup} to ${dest}!`);
-            pickupInput.value = '';
-            destInput.value = '';
-        } else {
-            alert('Please enter both pickup and destination locations.');
-        }
-    });
+    if (pickup && dest) {
+        statusDiv.style.display = 'block';
+        statusDiv.className = 'searching';
+        statusDiv.innerText = 'Searching for a driver...';
+        
+        setTimeout(() => {
+            statusDiv.className = 'confirmed';
+            statusDiv.innerText = `Driver found! En route to ${pickup}.`;
+        }, 3000);
+    } else {
+        alert('Please enter both locations.');
+    }
 });

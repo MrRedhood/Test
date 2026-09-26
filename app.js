@@ -12,15 +12,16 @@ bookBtn.addEventListener('click', () => {
     }
 
     bookBtn.disabled = true;
-    bookBtn.innerText = 'Connecting...';
+    bookBtn.style.opacity = '0.5';
     statusDiv.style.display = 'block';
     statusDiv.className = 'searching';
-    statusDiv.innerHTML = `<div>Searching for ${type} driver...</div><button id="cancelBtn">Cancel Request</button>`;
+    statusDiv.innerHTML = `<div>Searching for your <strong>${type}</strong> ride...</div><button id="cancelBtn">Cancel Request</button>`;
     
     const timeout = setTimeout(() => {
         statusDiv.className = 'confirmed';
-        statusDiv.innerHTML = `<div><strong>Driver Found!</strong><br>Your ${type} ride to ${dest} is arriving shortly.</div>`;
+        statusDiv.innerHTML = `<div><strong>Driver Found!</strong><br>Your ${type} ride to <strong>${dest}</strong> is arriving shortly.</div>`;
         bookBtn.disabled = false;
+        bookBtn.style.opacity = '1';
         bookBtn.innerText = 'Request Another';
     }, 3000);
 
@@ -28,6 +29,7 @@ bookBtn.addEventListener('click', () => {
         clearTimeout(timeout);
         statusDiv.style.display = 'none';
         bookBtn.disabled = false;
+        bookBtn.style.opacity = '1';
         bookBtn.innerText = 'Request Ride';
     });
 });
